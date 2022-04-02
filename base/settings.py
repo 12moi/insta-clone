@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'base.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'insta',
-        'USER': 'moringa',
-        'PASSWORD':'12access',
-    }
+         'ENGINE': 'django.db.backends.postgresql',
+          'NAME': 'insta',
+          'USER': 'moringa',
+          'PASSWORD':'12access',
+     }
 }
 
 

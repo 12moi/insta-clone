@@ -1,8 +1,5 @@
 
 
-from distutils.command.upload import upload
-from email.policy import default
-from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -15,7 +12,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=500, default='My Bio', blank=True)
     name = models.CharField(blank=True, max_length=150)
-    profile_pic = CloudinaryField('profile_pic')
+    profile_picture = CloudinaryField('profile_picture')
     location = models.CharField(max_length=60, blank=True)
 
     def __str__(self):
