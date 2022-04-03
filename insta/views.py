@@ -3,10 +3,10 @@
 from django.shortcuts import render, render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
-from .models import Image, Comment, Profile, Follow
+from .models import Image, Profile, Follow, Comment
 from .forms import SignUpForm, UpdateUserForm, UpdateUserProfileForm, ImageForm, CommentForm
 from django.contrib.auth import login, authenticate
-from django.template.loader import render_to_string
+
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -53,7 +53,7 @@ def index(request):
 
 @login_required(login_url='login')
 def post_comment(request, id):
-    image = get_object_or_404(Image, pk=id)
+    image = get_object_or_404(Comment, pk=id)
     is_liked = False
     if image.likes.filter(id=request.user.id).exists():
         is_liked = True

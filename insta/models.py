@@ -77,8 +77,6 @@ class Follow(models.Model):
 
 
 
-
-
 class Comment(models.Model):
     comment = models.TextField()
     post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
