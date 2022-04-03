@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
-# from .models import Post, Comment, Profile, Follow
+from .models import Image, Comment, Profile, Follow
 # from .forms import SignUpForm, UpdateUserForm, UpdateUserProfileForm, PostForm, CommentForm
 from django.contrib.auth import login, authenticate
 # from django.template.loader import render_to_string
@@ -25,7 +25,7 @@ def signup(request):
             return redirect('index')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'templates/registration/signup.html', {'form': form})
 
 @login_required(login_url='login')
 def index(request):
