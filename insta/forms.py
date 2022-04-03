@@ -36,7 +36,7 @@ class ImageForm(forms.ModelForm):
         fields = ('image', 'caption')
 
 
-class CommentsForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['comment'].widget = forms.TextInput()
