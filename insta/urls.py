@@ -3,10 +3,10 @@ from . import views
 
 
 urlpatterns = [
-    # 
+    
     # account/
     url('signup/', views.signup, name='signup'),
-    url('', include('django.contrib.auth.urls')),
+    url('account/', include('django.contrib.auth.urls')),
     url(r'^$', views.index, name='index'),
     url('', views.profile, name='profile'),
     # profile/<username>/
