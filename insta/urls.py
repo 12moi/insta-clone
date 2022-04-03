@@ -9,5 +9,5 @@ urlpatterns = [
     # url('profile/<username>/', views.profile, name='profile'),
     # url('user_profile/<username>/', views.user_profile, name='user_profile'),
     # url('post/<id>', views.post_comment, name='comment'),
-    
+    url('search/', views.search_profile, name='search'),
 ]
