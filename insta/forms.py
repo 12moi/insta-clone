@@ -5,7 +5,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Image, Profile,Comment
+from .models import Post, Profile,Comment
 
 
 class SignUpForm(UserCreationForm):
@@ -30,9 +30,9 @@ class UpdateUserProfileForm(forms.ModelForm):
         fields = ['name', 'location', 'profile_picture', 'bio']
 
 
-class ImageForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Image
+        model = Post
         fields = ('image', 'caption')
 
 

@@ -37,7 +37,7 @@ class Profile(models.Model):
     def search_profile(cls, name):
         return cls.objects.filter(user__username__icontains=name).all()
     
-class Image(models.Model):
+class Post(models.Model):
     image = CloudinaryField('image')
     name = models.CharField(max_length=150, blank=True)
     caption = models.CharField('Caption(optional)', max_length=400, blank=True)
@@ -79,7 +79,7 @@ class Follow(models.Model):
 
 class Comment(models.Model):
     comment = models.TextField()
-    post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     created = models.DateTimeField(auto_now_add=True, null=True)
 

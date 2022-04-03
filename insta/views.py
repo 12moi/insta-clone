@@ -3,8 +3,8 @@
 from django.shortcuts import render, render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
-from .models import Image, Profile, Follow, Comment
-from .forms import SignUpForm, UpdateUserForm, UpdateUserProfileForm, ImageForm, CommentForm
+from .models import  Profile, Follow, Comment, Post
+from .forms import SignUpForm, UpdateUserForm, UpdateUserProfileForm, PostForm, CommentForm
 from django.contrib.auth import login, authenticate
 
 from django.contrib.auth.models import User
@@ -31,17 +31,17 @@ def signup(request):
 
 @login_required(login_url='login')
 def index(request):
-    images = Image.objects.all()
+    images = Post.objects.all()
     users = User.objects.exclude(id=request.user.id)
     if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user.profile
             post.save()
             return HttpResponseRedirect(request.path_info)
     else:
-        form = ImageForm()
+        form = PostForm()
     params = {
         'images': images,
         'form': form,
@@ -91,6 +91,7 @@ def user_profile(request, username):
         else:
             follow_status = False
     params = {
+        'user_prof': username,
         'user_prof': user_prof,
         'user_posts': user_posts,
         'followers': followers,

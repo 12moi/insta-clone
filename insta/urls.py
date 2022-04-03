@@ -11,7 +11,7 @@ urlpatterns = [
     url('', views.profile, name='profile'),
     # profile/<username>/
     # user_profile/<username>/
-    url('', views.user_profile, name='user_profile'),
+    url(r'user_profile/<username>/', views.user_profile, name='user_profile'),
     url('post/<id>', views.post_comment, name='comment'),
     url('search/', views.search_profile, name='search'),
 ]
