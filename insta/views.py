@@ -1,12 +1,12 @@
 
 
+from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.shortcuts import render, render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 from .models import  Profile, Follow, Comment, Post
 from .forms import SignUpForm, UpdateUserForm, UpdateUserProfileForm, PostForm, CommentForm
 from django.contrib.auth import login, authenticate
-
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -46,7 +46,6 @@ def index(request):
         'images': images,
         'form': form,
         'users': users,
-
     }
     return render(request, 'insta/index.html', params)
 
@@ -101,7 +100,7 @@ def user_profile(request, username):
     return render(request, 'insta/user_profile.html', params)
 
 @login_required(login_url='login')
-def profile(request, username):
+def profile(request):
     images = request.user.profile.posts.all()
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
