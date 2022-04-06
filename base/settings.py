@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import dj_database_url
+import django_heroku
 from decouple import config,Csv
 import cloudinary
 import cloudinary.uploader
@@ -18,7 +19,7 @@ import cloudinary.api
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,9 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tqav(k=xy_q4huw6j_yo7451d#i7-#e^c$jvn16*6tw23mizhp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -178,4 +178,4 @@ cloudinary.config(
   api_secret = "YY5igLwW3kkB7lh8-1_TWtUdwlo" 
 )
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
