@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import django_heroku
 import dj_database_url
 from decouple import config,Csv
 import cloudinary
@@ -179,4 +178,4 @@ cloudinary.config(
   api_secret = "YY5igLwW3kkB7lh8-1_TWtUdwlo" 
 )
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
